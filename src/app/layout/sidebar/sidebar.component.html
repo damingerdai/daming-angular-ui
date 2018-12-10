@@ -1,0 +1,20 @@
+<mat-sidenav-container class="app-container">
+  <mat-sidenav #sideNav [mode]="mode" [opened]="opended" class="app-sidenav" style="width: 150px;">
+    <mat-nav-list>
+      <ng-container *ngFor="let menu of menus">
+        <h3 [matTooltip]="menu.header.text" matSubheader>{{ menu.header.text }}</h3>
+        <a *ngFor="let item of menu.items" [routerLink]="item.link" [matTooltip]="item.tooltip || item.text"
+          mat-list-item>
+          <em [class]="item.icon" *ngIf="item.icon"></em>
+          <span style="margin-left: 10px">
+            {{ item.text }}
+          </span>
+        </a>
+      </ng-container>
+
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content style="right: 0;">
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>

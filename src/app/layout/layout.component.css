@@ -1,0 +1,21 @@
+.warp {
+    width: 100%;
+    margin:0 auto;
+}
+
+.app-header {
+    position: fixed;
+    top: 0;
+    z-index: 2;
+}
+
+.app-container {
+    position: relative;
+    padding-top: 64px; 
+    height: calc(100vh - 64px)
+}
+.app-sidenav {
+    position: absolute;
+    padding-top: 64px;  
+    height: calc(100vh - 64px) 
+}

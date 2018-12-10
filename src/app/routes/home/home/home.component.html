@@ -1,0 +1,29 @@
+<mat-grid-list [cols]="gridListCols$ | async" style="padding: 10px" rowHeight="200px">
+  <mat-grid-tile rowspan="1" colspan="1" style="color: #fff;background-color: #5d9cec">
+    <mat-grid-tile-header>New Comments!</mat-grid-tile-header>
+    <div class="box">
+      <span class="pull-left">
+        <em class="fa fa-comments fa-5x"></em>
+      </span>
+       <span class="pull-right">
+        26
+      </span> 
+    </div>
+
+    <mat-grid-tile-footer>View Details</mat-grid-tile-footer>
+  </mat-grid-tile>
+  <mat-grid-tile *ngFor="let tile of tiles" [colspan]="tile.cols" [rowspan]="tile.rows" [style.background]="tile.color">
+    {{tile.text}}
+    <mat-grid-tile-header>1</mat-grid-tile-header>
+  </mat-grid-tile>
+</mat-grid-list>
+<mat-divider>
+
+</mat-divider>
+
+<mat-grid-list [cols]="gridListCols$ | async">
+  <mat-grid-tile *ngFor="let tile of tiles" [colspan]="tile.cols" [rowspan]="tile.rows" [style.background]="tile.color">
+    {{tile.text}}
+    <mat-grid-tile-header>1</mat-grid-tile-header>
+  </mat-grid-tile>
+</mat-grid-list>

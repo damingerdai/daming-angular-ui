@@ -1,0 +1,45 @@
+.post-tile {
+    align-self: flex-start;
+    width: 100%;
+    margin: 5px;
+    height: 100%;
+}
+
+.box {
+    width: 100%;
+    padding: 40px
+}
+
+.pull-right {
+    float: right !important;
+}
+
+.pull-left {
+    float: left !important;
+}
+
+.left {
+    position: absolute;
+    left: 10%;
+    vertical-align: middle;
+    text-align: center;   
+    bottom: 25%;
+    top: 25%;
+}
+
+.right {
+    position: absolute;
+    right: 10%;
+    vertical-align: middle;
+    text-align: center;
+    bottom: 25%;
+    top: 25%;
+    font-size: 4.6em;
+    line-height: 100%;
+}
+
+
+
+mat-card:focus {
+    background: lightblue;
+}
