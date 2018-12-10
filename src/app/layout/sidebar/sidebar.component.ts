@@ -28,8 +28,6 @@ export class SidebarComponent implements OnInit, OnDestroy {
   @ViewChild('sideNav')
   sideNav: MatSidenav;
 
-  
-
   @Input()
   set opended(opended: boolean) {
     this._opended = opended;
