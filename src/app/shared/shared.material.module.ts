@@ -13,6 +13,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatDividerModule } from '@angular/material/divider';
+import { MatMenuModule } from '@angular/material/menu';
 
 @NgModule({
     imports: [
@@ -29,7 +30,8 @@ import { MatDividerModule } from '@angular/material/divider';
         MatTooltipModule,
         MatSnackBarModule,
         MatDialogModule,
-        MatDividerModule
+        MatDividerModule,
+        MatMenuModule
     ], // 先import
     exports: [
         MatToolbarModule,
@@ -45,7 +47,8 @@ import { MatDividerModule } from '@angular/material/divider';
         MatTooltipModule,
         MatSnackBarModule,
         MatDialogModule,
-        MatDividerModule
+        MatDividerModule,
+        MatMenuModule
     ] // 在export
 })
 export class SharedMaterialModule {

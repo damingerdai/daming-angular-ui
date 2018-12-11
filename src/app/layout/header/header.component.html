@@ -1,8 +1,23 @@
 <mat-toolbar class="app-header" color="primary" role="heading">
-  <button mat-icon-button  (click)="doToggle()">
-      <mat-icon>  
-          {{ iconName }}
-      </mat-icon>
-  </button>
-  <span>Damingeridai UI</span>
+    <button mat-icon-button (click)="doToggle()">
+        <mat-icon>
+            {{ iconName }}
+        </mat-icon>
+    </button>
+    <span>Damingeridai UI</span>
+
+    <span class="toolbar-seprator"></span>
+
+    <mat-icon>person</mat-icon>
+    <button mat-button [matMenuTriggerFor]="personMenu" #menuTrigger="matMenuTrigger">
+        大明
+    </button>
+    <button mat-icon-button>
+        <mat-icon>exit_to_app</mat-icon>
+    </button>
+    <mat-menu #personMenu="matMenu">
+        <button mat-menu-item>
+            注销
+        </button>
+    </mat-menu>
 </mat-toolbar>

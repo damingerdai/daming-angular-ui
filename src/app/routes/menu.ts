@@ -17,21 +17,5 @@ export const Menus: IMenu[] = [{
         text: '首页',
         icon: 'icon-home',
         link: '/home'
-    }, {
-        text: 'flowchart.js',
-        icon: 'icon-bulb',
-        link: '/home'
-    }, {
-        text: 'go.js',
-        icon: 'icon-bulb',
-        link: '/gojs'
-    }, {
-        text: 'joint.js',
-        icon: 'icon-bulb',
-        link: '/jointjs'
-    }, {
-        text: 'jsPlumb',
-        icon: 'icon-bulb',
-        link: '/home'
     }]
 }];
