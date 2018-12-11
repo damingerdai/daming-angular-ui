@@ -50,6 +50,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
           console.log(`this._opended: ${this._opended}`);
           if (this._opended && result.matches) {
             this.opended = false;
+          } else if (!this._opended && !result.matches) {
+            this.opended = true;
           }
         });
   }

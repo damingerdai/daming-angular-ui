@@ -38,6 +38,36 @@
     line-height: 100%;
 }
 
+.text-lg {
+    font-size: 3.5em
+}
+
+.mat-grid-tile {
+    color: #fff;
+
+}
+
+.mat-grid-tile-primary {
+    border-color: #5d9cec;
+    background-color: #5d9cec
+}
+
+.mat-grid-tile-info {
+    border-color: #5bc0de;
+    background-color: #5bc0de;
+}
+
+.mat-grid-tile-warning {
+    border-color: #f0ad4e;
+    background-color: #f0ad4e;
+}
+
+.mat-grid-tile-danger {
+    border-color:  #d9534f;
+    background-color: #d9534f;
+}
+
+
 
 
 mat-card:focus {
