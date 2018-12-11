@@ -1,3 +1,34 @@
-<p>
-  basic works!
-</p>
+<button mat-button (click)="isLinear = !isLinear">切换Linear</button>
+<form [formGroup]="surveyForm">
+  <mat-horizontal-stepper [linear]="isLinear">
+    <mat-step formGroupName="basicQuestions" [stepControl]="surveyForm.get('basicQuestions')">
+      <ng-template matStepLabel>
+        <u>个人信息</u>
+      </ng-template>
+      <h4>请提供个人信息</h4>
+      <div style="text-align:center">
+        <mat-form-field>
+          <input name="name" matInput placeholder="姓名" formControlName="name" required>
+          <mat-error>请输入自己的姓名</mat-error>
+        </mat-form-field>
+        <br />
+      </div>
+      <button mat-button matStepperNext>前进到「详细问题」</button>
+    </mat-step>
+    <mat-step>
+      <ng-template matStepLabel>
+        <u>详细问题</u>
+      </ng-template>
+      <h4>主要的问题内容</h4>
+      <button mat-button matStepperPrevious>回到「个人信息」</button>
+      <button mat-button matStepperNext>前进到「其他」</button>
+    </mat-step>
+    <mat-step optional>
+      <ng-template matStepLabel>
+        <u>其他</u>
+      </ng-template>
+      <h4>其他问题</h4>
+      <button mat-button matStepperPrevious>回到「详细问题」</button>
+    </mat-step>
+  </mat-horizontal-stepper>
+</form>

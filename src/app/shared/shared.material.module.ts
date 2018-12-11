@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
@@ -14,6 +15,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatMenuModule } from '@angular/material/menu';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 
 @NgModule({
     imports: [
@@ -31,7 +34,9 @@ import { MatMenuModule } from '@angular/material/menu';
         MatSnackBarModule,
         MatDialogModule,
         MatDividerModule,
-        MatMenuModule
+        MatMenuModule,
+        MatFormFieldModule,
+        MatInputModule
     ], // 先import
     exports: [
         MatToolbarModule,
@@ -48,7 +53,9 @@ import { MatMenuModule } from '@angular/material/menu';
         MatSnackBarModule,
         MatDialogModule,
         MatDividerModule,
-        MatMenuModule
+        MatMenuModule,
+        MatFormFieldModule,
+        MatInputModule
     ] // 在export
 })
 export class SharedMaterialModule {
