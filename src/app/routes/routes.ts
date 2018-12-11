@@ -8,6 +8,7 @@ export const routes = [
         children: [
             { path: '', redirectTo: 'home', pathMatch: 'full' },
             { path: 'home', loadChildren: './home/home.module#HomeModule' },
+            { path: 'forms', loadChildren: './forms/forms.module#FormsModule' },
         ]
     },
 
