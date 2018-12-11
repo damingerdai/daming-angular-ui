@@ -2,6 +2,7 @@ import { Component, OnInit, Input, Output, EventEmitter, OnDestroy } from '@angu
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 
 import { Subscription } from 'rxjs';
+import { LayoutService } from '../../core/layout/layout.service';
 
 @Component({
   selector: 'app-header',
@@ -19,11 +20,6 @@ export class HeaderComponent implements OnInit, OnDestroy {
   @Input()
   set opended(_opended: boolean) {
     this._opended = _opended;
-    // if (!this._isMobile) {
-    //   this.iconName = this._opended ?  'menu' : 'close';
-    // } else {
-
-    // }
     this.iconName = !this._isMobile && !this._opended ? 'close' : 'menu';
     this.toggle.emit(this.opended);
   }
@@ -41,19 +37,19 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   constructor(
-    private breakpointObserver: BreakpointObserver) {
-      this._subscription = this.breakpointObserver.observe([Breakpoints.Small, Breakpoints.XSmall])
-        .subscribe(result => {
-          console.log(`is mobile: ${result.matches}`);
-          this._isMobile = result.matches;
-          console.log(`this._mobile: ${this._isMobile}`);
-          console.log(`this._opended: ${this._opended}`);
-          if (this._opended && result.matches) {
+    private breakpointObserver: BreakpointObserver,
+    private layoutService: LayoutService) {
+      this._subscription = this.layoutService.screenSize$.subscribe(
+        result => {
+          const matches = result === 'xsamll' || result === 'samll';
+          this._isMobile = matches;
+          if (this._opended &&  matches) {
             this.opended = false;
-          } else if (!this._opended && !result.matches) {
+          } else if (!this._opended && !matches) {
             this.opended = true;
           }
-        });
+        }
+      );
   }
 
   ngOnInit() {

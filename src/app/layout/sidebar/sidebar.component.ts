@@ -1,11 +1,12 @@
 import { Component, OnInit, OnDestroy, Input, ViewChild } from '@angular/core';
-import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
+import { MatSidenav, MatTooltipDefaultOptions, MAT_TOOLTIP_DEFAULT_OPTIONS } from '@angular/material';
 
 import { Subscription } from 'rxjs';
 
 import { MenuService } from '../../core/menu/menu.service';
 import { IMenu } from '../../routes/menu';
-import { MatSidenav, MatTooltipDefaultOptions, MAT_TOOLTIP_DEFAULT_OPTIONS } from '@angular/material';
+
+import { LayoutService } from '../../core/layout/layout.service';
 
 export const myCustomTooltipDefaults: MatTooltipDefaultOptions = {
   showDelay: 1000,
@@ -18,7 +19,7 @@ export const myCustomTooltipDefaults: MatTooltipDefaultOptions = {
   templateUrl: './sidebar.component.html',
   styleUrls: ['./sidebar.component.css'],
   providers: [
-    {provide: MAT_TOOLTIP_DEFAULT_OPTIONS, useValue: myCustomTooltipDefaults}
+    { provide: MAT_TOOLTIP_DEFAULT_OPTIONS, useValue: myCustomTooltipDefaults }
   ],
 })
 export class SidebarComponent implements OnInit, OnDestroy {
@@ -43,19 +44,19 @@ export class SidebarComponent implements OnInit, OnDestroy {
   subscriptions: Subscription[] = [];
 
   constructor(public menuService: MenuService,
-    private breakpointObserver: BreakpointObserver) {
+    private layoutService: LayoutService) {
     this.menus = this.menuService.getMenu();
     // this.menuSubscription = this.menuService.menus$.subscribe(menus => this.menus = menus);
     this.subscriptions.push(this.menuService.menus$.subscribe(menus => this.menus = menus));
-    // tslint:disable-next-line:max-line-length
-    this.subscriptions.push(this.breakpointObserver.observe([Breakpoints.Small, Breakpoints.XSmall])
-      .subscribe(result => {
-        if (result.matches) {
+    this.subscriptions.push(
+      this.layoutService.screenSize$.subscribe(result => {
+        if (result === 'xsamll' || result === 'samll') {
           this.mode = 'over';
         } else {
           this.mode = 'side';
         }
-      }));
+      })
+    );
 
   }
 
