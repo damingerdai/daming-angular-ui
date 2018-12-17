@@ -10,7 +10,7 @@
         <mat-grid-list [cols]="isMobile ? 1 : 2" rowHeight="100px">
           <mat-grid-tile>
             <label for="gender">性别：</label>
-            <mat-radio-group>
+            <mat-radio-group name="gender" formControlName="gender" required>
               <mat-radio-button value="1">男</mat-radio-button>
               <mat-radio-button value="2">女</mat-radio-button>
             </mat-radio-group>

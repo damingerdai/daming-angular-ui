@@ -18,6 +18,7 @@ export class BasicComponent implements OnInit {
   constructor(private layoutService: LayoutService) {
     this.surveyForm = new FormGroup({
       basicQuestions: new FormGroup({
+        gender: new FormControl('1', Validators.required),
         name: new FormControl('', Validators.required),
         birthday: new FormControl('', Validators.required),
         education: new FormControl('', Validators.required)
