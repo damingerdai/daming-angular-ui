@@ -19,7 +19,8 @@ export class BasicComponent implements OnInit {
     this.surveyForm = new FormGroup({
       basicQuestions: new FormGroup({
         name: new FormControl('', Validators.required),
-        birthday: new FormControl('', Validators.required)
+        birthday: new FormControl('', Validators.required),
+        education: new FormControl('', Validators.required)
       })
     });
 

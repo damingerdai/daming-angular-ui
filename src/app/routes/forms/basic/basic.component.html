@@ -32,7 +32,7 @@
           </mat-grid-tile>
           <mat-grid-tile>
             <mat-form-field>
-              <mat-select placeholder="选择学历" name="education">
+              <mat-select placeholder="选择学历" name="education" formControlName="education">
                 <mat-option value="1">
                   大专
                 </mat-option>
@@ -43,7 +43,7 @@
                   硕士
                 </mat-option>
               </mat-select>
-              <mat-error>请输入自己的生日</mat-error>
+              <mat-error>请输入自己的学历</mat-error>
             </mat-form-field>
           </mat-grid-tile>
         </mat-grid-list>
