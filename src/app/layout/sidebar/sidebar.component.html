@@ -3,7 +3,7 @@
     <mat-nav-list *ngFor="let menu of menus">
       <h3 [matTooltip]="menu.header.text" matSubheader>{{ menu.header.text }}</h3>
       <a *ngFor="let item of menu.items" [routerLink]="item.link" [matTooltip]="item.tooltip || item.text"
-        mat-list-item>
+        mat-list-item routerLinkActive="active">
         <em [class]="item.icon" *ngIf="item.icon"></em>
         <span style="margin-left: 10px">
           {{ item.text }}
