@@ -17,6 +17,23 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { MatRadioModule } from '@angular/material/radio';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatMomentDateModule } from '@angular/material-moment-adapter';
+import { MatSelectModule } from '@angular/material/select';
+import { MAT_DATE_LOCALE, MAT_DATE_FORMATS } from '@angular/material';
+
+export const CN_FORMATS = {
+    parse: {
+      dateInput: 'YYYY/MM/DD'
+    },
+    display: {
+      dateInput: 'YYYY/MM/DD',
+      monthYearLabel: 'YYYY MMM',
+      dateA11yLabel: 'YYYY/MM/DD',
+      monthYearA11yLabel: 'YYYY MMM'
+    }
+  };
 
 @NgModule({
     imports: [
@@ -36,7 +53,11 @@ import { MatInputModule } from '@angular/material/input';
         MatDividerModule,
         MatMenuModule,
         MatFormFieldModule,
-        MatInputModule
+        MatInputModule,
+        MatRadioModule,
+        MatDatepickerModule,
+        MatMomentDateModule,
+        MatSelectModule,
     ], // 先import
     exports: [
         MatToolbarModule,
@@ -55,8 +76,16 @@ import { MatInputModule } from '@angular/material/input';
         MatDividerModule,
         MatMenuModule,
         MatFormFieldModule,
-        MatInputModule
-    ] // 在export
+        MatInputModule,
+        MatRadioModule,
+        MatDatepickerModule,
+        MatMomentDateModule,
+        MatSelectModule,
+    ], // 在export
+    providers: [
+        { provide: MAT_DATE_LOCALE, useValue: 'zh-CN' },
+        { provide: MAT_DATE_FORMATS, useValue: CN_FORMATS }
+      ]
 })
 export class SharedMaterialModule {
 

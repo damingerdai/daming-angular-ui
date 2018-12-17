@@ -6,13 +6,52 @@
         <u>个人信息</u>
       </ng-template>
       <h4>请提供个人信息</h4>
-      <div style="text-align:center">
-        <mat-form-field>
-          <input name="name" matInput placeholder="姓名" formControlName="name" required>
-          <mat-error>请输入自己的姓名</mat-error>
-        </mat-form-field>
-        <br />
-      </div>
+      <mat-card>
+        <mat-grid-list [cols]="isMobile ? 1 : 2" rowHeight="100px">
+          <mat-grid-tile>
+            <label for="gender">性别：</label>
+            <mat-radio-group>
+              <mat-radio-button value="1">男</mat-radio-button>
+              <mat-radio-button value="2">女</mat-radio-button>
+            </mat-radio-group>
+          </mat-grid-tile>
+          <mat-grid-tile>
+            <mat-form-field>
+              <input name="name" matInput placeholder="姓名" formControlName="name" required>
+              <mat-error>请输入自己的姓名</mat-error>
+            </mat-form-field>
+          </mat-grid-tile>
+          <mat-grid-tile>
+            <mat-form-field>
+              <input name="birthday" matInput [matDatepicker]="picker" placeholder="选择生日" formControlName="birthday"
+                required>
+              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker [touchUi]="isMobile"></mat-datepicker>
+              <mat-error>请输入自己的生日</mat-error>
+            </mat-form-field>
+          </mat-grid-tile>
+          <mat-grid-tile>
+            <mat-form-field>
+              <mat-select placeholder="选择学历" name="education">
+                <mat-option value="1">
+                  大专
+                </mat-option>
+                <mat-option value="2">
+                  本科
+                </mat-option>
+                <mat-option value="3">
+                  硕士
+                </mat-option>
+              </mat-select>
+              <mat-error>请输入自己的生日</mat-error>
+            </mat-form-field>
+          </mat-grid-tile>
+        </mat-grid-list>
+
+      </mat-card>
+
+
+
       <button mat-button matStepperNext>前进到「详细问题」</button>
     </mat-step>
     <mat-step>
