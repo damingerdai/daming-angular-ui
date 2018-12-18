@@ -47,18 +47,30 @@
             </mat-form-field>
           </mat-grid-tile>
         </mat-grid-list>
-
       </mat-card>
-
-
-
       <button mat-button matStepperNext>前进到「详细问题」</button>
     </mat-step>
-    <mat-step>
+    <mat-step formGroupName="detailedQuestions" [stepControl]="surveyForm.get('detailedQuestions')">
       <ng-template matStepLabel>
         <u>详细问题</u>
       </ng-template>
       <h4>主要的问题内容</h4>
+      <mat-card>
+        <mat-grid-list [cols]="isMobile ? 1 : 2" rowHeight="100px">
+          <mat-grid-tile>
+            <mat-checkbox formControlName="chexbox">大明帅不帅</mat-checkbox>
+          </mat-grid-tile>
+          <mat-grid-tile>
+            <label for="appearance">大明颜值：</label>
+            <mat-slider formControlName="appearance" min="0" max="100" step="1" value="0" thumbLabel tickInterval="1"></mat-slider>
+          </mat-grid-tile>
+          <mat-grid-tile>
+            <mat-slide-toggle formControlName="love" color="accent">
+              喜欢大明
+            </mat-slide-toggle>
+          </mat-grid-tile>
+        </mat-grid-list>
+      </mat-card>
       <button mat-button matStepperPrevious>回到「个人信息」</button>
       <button mat-button matStepperNext>前进到「其他」</button>
     </mat-step>
@@ -67,6 +79,52 @@
         <u>其他</u>
       </ng-template>
       <h4>其他问题</h4>
+      <mat-card>
+        <mat-card-title>
+          汇总个人信息
+        </mat-card-title>
+        <mat-card-content>
+          <div style="padding-left: 20%; padding-right:20%">
+            <mat-accordion>
+              <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                  <mat-panel-title>
+                    个人信息
+                  </mat-panel-title>
+                  <mat-panel-description>
+                    个人信息
+                  </mat-panel-description>
+                </mat-expansion-panel-header>
+                <mat-list role="list">
+                  <mat-list-item role="listitem">
+                    <mat-form-field>
+                      <input matInput placeholder="性别" [value]="surveyForm.get('basicQuestions').get('gender').value == '1' ? '男' : '女'"
+                        disabled="disabled">
+                    </mat-form-field>
+                  </mat-list-item>
+                  <mat-list-item role="listitem">
+                    <mat-form-field>
+                      <input matInput placeholder="名字" [value]="surveyForm.get('basicQuestions').get('name').value"
+                        disabled="disabled">
+                    </mat-form-field>
+                  </mat-list-item>
+                  <mat-list-item role="listitem">
+                    <mat-form-field>
+                      <input matInput placeholder="生日" [value]="surveyForm.get('basicQuestions').get('birthday').value"
+                        disabled="disabled">
+                    </mat-form-field>
+                  </mat-list-item>
+                </mat-list>
+
+                <!-- <mat-calendar></mat-calendar> -->
+
+              </mat-expansion-panel>
+
+            </mat-accordion>
+          </div>
+
+        </mat-card-content>
+      </mat-card>
       <button mat-button matStepperPrevious>回到「详细问题」</button>
     </mat-step>
   </mat-horizontal-stepper>

@@ -21,6 +21,8 @@ import { MatRadioModule } from '@angular/material/radio';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatMomentDateModule } from '@angular/material-moment-adapter';
 import { MatSelectModule } from '@angular/material/select';
+import { MatSliderModule } from '@angular/material/slider';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MAT_DATE_LOCALE, MAT_DATE_FORMATS } from '@angular/material';
 
 export const CN_FORMATS = {
@@ -58,6 +60,8 @@ export const CN_FORMATS = {
         MatDatepickerModule,
         MatMomentDateModule,
         MatSelectModule,
+        MatSliderModule,
+        MatSlideToggleModule
     ], // 先import
     exports: [
         MatToolbarModule,
@@ -81,6 +85,8 @@ export const CN_FORMATS = {
         MatDatepickerModule,
         MatMomentDateModule,
         MatSelectModule,
+        MatSliderModule,
+        MatSlideToggleModule,
     ], // 在export
     providers: [
         { provide: MAT_DATE_LOCALE, useValue: 'zh-CN' },

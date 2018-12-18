@@ -22,7 +22,12 @@ export class BasicComponent implements OnInit {
         name: new FormControl('', Validators.required),
         birthday: new FormControl('', Validators.required),
         education: new FormControl('', Validators.required)
-      })
+      }),
+      detailedQuestions: new FormGroup({
+        chexbox: new FormControl(),
+        appearance: new FormControl('1'),
+        love: new FormControl(true, Validators.required)
+      }),
     });
 
     this.layoutService.screenSize$.subscribe(result => {
