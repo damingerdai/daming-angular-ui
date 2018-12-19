@@ -1,0 +1,55 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>表格</mat-card-title>
+    <mat-card-subtitle>一个简单的表格例子</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <mat-card>
+      <mat-card-header>
+
+      </mat-card-header>
+      <mat-card-content>
+        <mat-card>
+          <div class="loading-shade" *ngIf="isLoadingResults || isRateLimitReached">
+            <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
+            <div class="example-rate-limit-reached" *ngIf="isRateLimitReached">
+              GitHub's API rate limit has been reached. It will be reset in one minute.
+            </div>
+          </div>
+          <mat-table [dataSource]="emailsDataSource" matSort #sortTable="matSort" (matSortChange)="changeSort($event)">
+            <mat-header-row *matHeaderRowDef="['user', 'title', 'created_at', 'management']"></mat-header-row>
+            <mat-row *matRowDef="let emailRow; columns: ['user', 'title', 'created_at', 'management']"></mat-row>
+            <ng-container matColumnDef="user">
+              <mat-header-cell *matHeaderCellDef>寄件人</mat-header-cell>
+              <mat-cell *matCellDef="let row">{{ row.user.login }}</mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="title">
+              <mat-header-cell *matHeaderCellDef>標題</mat-header-cell>
+              <mat-cell *matCellDef="let row">{{ row.title }}</mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="created_at">
+              <mat-header-cell *matHeaderCellDef mat-sort-header>日期</mat-header-cell>
+              <mat-cell *matCellDef="let row">{{ row.created_at }}</mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="management">
+              <mat-header-cell *matHeaderCellDef>
+                <u>管理</u>
+              </mat-header-cell>
+              <mat-cell *matCellDef="let row">
+                <button mat-button color="primary">回覆</button>
+                <button mat-button color="warn">刪除</button>
+              </mat-cell>
+            </ng-container>
+          </mat-table>
+          <mat-card-actions>
+            <mat-paginator #paginator [length]="totalCount" [pageIndex]="0" [pageSize]="10" [pageSizeOptions]="[5, 10, 15]">
+            </mat-paginator>
+          </mat-card-actions>
+        </mat-card>
+
+      </mat-card-content>
+    </mat-card>
+  </mat-card-content>
+
+
+</mat-card>

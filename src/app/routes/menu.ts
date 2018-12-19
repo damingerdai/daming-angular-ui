@@ -27,4 +27,13 @@ export const Menus: IMenu[] = [{
         icon: 'icon-grid',
         link: '/forms/basic'
     }]
+}, {
+    header: {
+        text: '表格'
+    },
+    items: [{
+        text: '基础',
+        icon: 'icon-list',
+        link: '/table/basic'
+    }]
 }];
