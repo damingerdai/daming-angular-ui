@@ -1,14 +1,19 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, TemplateRef, ViewContainerRef } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { MatSort, Sort } from '@angular/material/sort';
-
-import {merge, Observable, of as observableOf} from 'rxjs';
-import {catchError, map, startWith, switchMap} from 'rxjs/operators';
+import { MatButton } from '@angular/material/button';
+import { OverlayRef, Overlay } from '@angular/cdk/overlay';
+import { TemplatePortal } from '@angular/cdk/portal';
+import { merge, Observable, of as observableOf } from 'rxjs';
+import { catchError, map, startWith, switchMap } from 'rxjs/operators';
 
 import { AddressService } from '../../../core/address/address.service';
+
+
+
 
 
 
@@ -22,6 +27,9 @@ export class BasicComponent implements OnInit {
 
   @ViewChild('paginator') paginator: MatPaginator;
   @ViewChild('sortTable') sortTable: MatSort;
+  @ViewChild('overlayMenuList') overlayMenuList: TemplateRef<any>;
+  @ViewChild('originFab') originFab: MatButton;
+  overlayRef: OverlayRef;
   displayedColumns: string[] = ['province', 'city', 'subCity', 'action'];
   emailsDataSource = new MatTableDataSource<any>();
   currentPage: PageEvent;
@@ -32,9 +40,17 @@ export class BasicComponent implements OnInit {
 
   constructor(
     private httpClient: HttpClient,
-    private addressService: AddressService) { }
+    private overlay: Overlay,
+    private viewContainerRef: ViewContainerRef) { }
 
   ngOnInit() {
+    const strategy = this.overlay
+      .position()
+      .connectedTo(this.originFab._elementRef, { originX: 'end', originY: 'top' }, { overlayX: 'end', overlayY: 'bottom' });
+    this.overlayRef = this.overlay.create({
+      positionStrategy: strategy
+    });
+
     this.currentPage = {
       pageIndex: 0,
       pageSize: 10,
@@ -93,6 +109,14 @@ export class BasicComponent implements OnInit {
         // 從後端取得資料時，就不用指定data srouce的paginator了
         // this.emailsDataSource.paginator = this.paginator;
       });
+  }
+
+  displayMenu() {
+    if (this.overlayRef && this.overlayRef.hasAttached()) {
+      this.overlayRef.detach();
+    } else {
+      this.overlayRef.attach(new TemplatePortal(this.overlayMenuList, this.viewContainerRef));
+    }
   }
 
 }

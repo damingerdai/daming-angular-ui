@@ -31,3 +31,19 @@ table {
     align-items: center;
     justify-content: center;
   }
+
+  .float-menu {
+    position: fixed !important;
+    right: 50px;
+    bottom: 100px;
+    z-index: 2;
+  }
+  
+  .fab-menu-panel {
+    border: 1px solid black;
+    background-color: white;
+  }
+  
+  .fab-menu-panel .mat-nav-list {
+    padding-top: 0px;
+  }
