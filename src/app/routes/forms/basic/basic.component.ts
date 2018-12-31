@@ -3,6 +3,8 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 import { LayoutService } from '../../../core/layout/layout.service';
 
+
+
 @Component({
   selector: 'app-basic',
   templateUrl: './basic.component.html',
@@ -15,7 +17,9 @@ export class BasicComponent implements OnInit {
 
   surveyForm: FormGroup;
 
-  constructor(private layoutService: LayoutService) {
+  constructor(
+    private layoutService: LayoutService,
+ ) {
     this.surveyForm = new FormGroup({
       basicQuestions: new FormGroup({
         gender: new FormControl('1', Validators.required),
