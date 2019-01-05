@@ -9,7 +9,7 @@ import { Menus } from './menu';
 
 @NgModule({
   imports: [
-    SharedModule,
+   // SharedModule,
     RouterModule.forRoot(routes)
   ],
   exports: [
