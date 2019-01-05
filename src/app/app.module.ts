@@ -20,7 +20,7 @@ import { RoutesModule } from './routes/routes.module';
     HttpClientModule,
     CoreModule,
     LayoutModule,
-    SharedModule,
+   
     RoutesModule
   ],
   providers: [],
