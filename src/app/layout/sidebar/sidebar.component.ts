@@ -1,5 +1,6 @@
 import { Component, OnInit, OnDestroy, Input, ViewChild } from '@angular/core';
-import { MatSidenav, MatTooltipDefaultOptions, MAT_TOOLTIP_DEFAULT_OPTIONS } from '@angular/material';
+import { MatSidenav } from '@angular/material/sidenav';
+import { MatTooltipDefaultOptions, MAT_TOOLTIP_DEFAULT_OPTIONS } from '@angular/material/tooltip';
 
 import { Subscription } from 'rxjs';
 
@@ -26,7 +27,7 @@ export class SidebarComponent implements OnInit, OnDestroy {
 
   private _opended = true;
 
-  @ViewChild('sideNav')
+  @ViewChild('sideNav', { static: false })
   sideNav: MatSidenav;
 
   @Input()

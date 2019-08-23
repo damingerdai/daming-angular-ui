@@ -25,10 +25,10 @@ import { AddressService } from '../../../core/address/address.service';
 })
 export class BasicComponent implements OnInit {
 
-  @ViewChild('paginator') paginator: MatPaginator;
-  @ViewChild('sortTable') sortTable: MatSort;
-  @ViewChild('overlayMenuList') overlayMenuList: TemplateRef<any>;
-  @ViewChild('originFab') originFab: MatButton;
+  @ViewChild('paginator', { static: false }) paginator: MatPaginator;
+  @ViewChild('sortTable', { static: false }) sortTable: MatSort;
+  @ViewChild('overlayMenuList', { static: false }) overlayMenuList: TemplateRef<any>;
+  @ViewChild('originFab', { static: false }) originFab: MatButton;
   overlayRef: OverlayRef;
   displayedColumns: string[] = ['province', 'city', 'subCity', 'action'];
   emailsDataSource = new MatTableDataSource<any>();
