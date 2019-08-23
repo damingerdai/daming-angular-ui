@@ -7,7 +7,7 @@ import { filter, map, mergeMap } from 'rxjs/operators';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
   title = 'damingerdai-ui';
@@ -34,5 +34,5 @@ export class AppComponent implements OnInit {
          mergeMap(route => route.data)
        ).subscribe((event) => this.titleService.setTitle('daming-' + event['title']));
    }
- 
+
 }
