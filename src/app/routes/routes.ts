@@ -7,9 +7,9 @@ export const routes = [
         component: LayoutComponent,
         children: [
             { path: '', redirectTo: 'home', pathMatch: 'full' },
-            { path: 'home', loadChildren: './home/home.module#HomeModule' , data: { title: '主页'}},
-            { path: 'forms', loadChildren: './forms/forms.module#FormsModule', data: { title: '表单'} },
-            { path: 'table', loadChildren: './table/table.module#TableModule', data: { title: '表格'} },
+            { path: 'home', loadChildren: () => import('./home/home.module').then(m => m.HomeModule) , data: { title: '主页'}},
+            { path: 'forms', loadChildren: () => import('./forms/forms.module').then(m => m.FormsModule), data: { title: '表单'} },
+            { path: 'table', loadChildren: () => import('./table/table.module').then(m => m.TableModule), data: { title: '表格'} },
         ]
     },
 
