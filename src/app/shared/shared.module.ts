@@ -21,7 +21,7 @@ import { SharedCdkModule } from './shared.cdk.module';
   ]
 })
 export class SharedModule {
-  static forRoot(): ModuleWithProviders {
+  static forRoot(): ModuleWithProviders<SharedModule> {
     return {
       ngModule: SharedModule
     };
