@@ -104,6 +104,14 @@
               "**/node_modules/**"
             ]
           }
+        },
+        "deploy": {
+          "builder": "angular-cli-ghpages:deploy",
+          "options": {
+            "baseHref": "https://damingerdai.github.io/daming-angular-ui/",
+            "name": "Arthur Ming",
+            "email": "mingguobin@live.com"
+          }
         }
       }
     },
